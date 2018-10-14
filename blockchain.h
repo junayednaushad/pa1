@@ -13,19 +13,15 @@ namespace junayed_naushad
         //default constructor
         Transaction() : amount(0), sender(""), receiver(""), nonce(""), hash(""), prev(NULL){}
         //constructor
-        Transaction(
-          int an_amount,
-          std::string a_sender,
-          std::string a_receiver,
-          std::string a_nonce,
-          std::string a_hash,
-          Transaction* a_prev) :
-          amount(an_amount),
-          sender(a_sender),
-          receiver(a_receiver),
-          nonce(a_nonce),
-          hash(a_hash),
-          prev(a_prev) {}
+        Transaction(int an_amount, std::string a_sender, std::string a_receiver)
+        {
+          amount = an_amount;
+          sender = a_sender;
+          receiver = a_receiver;
+          nonce = "";
+          hash = "";
+          prev = NULL;
+        }
 
         //Setters
         void set_amount(int new_amount)
@@ -47,6 +43,7 @@ namespace junayed_naushad
         std::string get_receiver() const {return receiver;}
         std::string get_nonce() const {return nonce;}
         std::string get_hash() const {return hash;}
+        Transaction* get_prev() const {return prev;}
 
     private:
         int amount;
@@ -58,12 +55,24 @@ namespace junayed_naushad
     };
 
     void print_Transaction(Transaction block);
-    /*
+
     class Blockchain
     {
+    public:
+      //default constructor
+      Blockchain()
+      {
+        head = new Transaction();
+      }
 
+      void add(int an_amount, std::string a_sender, std::string a_receiver);
+      void find(std::string a_sender) const;
+      void verify_print() const;
+
+    private:
+       Transaction* head;
     };
-    */
+
 }
 
 #endif

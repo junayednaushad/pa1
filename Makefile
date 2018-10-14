@@ -1,7 +1,7 @@
 blockchainTest: blockchain.o blockchainTest.o
 	g++ -g blockchain.o blockchainTest.o -o blockchainTest
 
-blockchainTest.o: blockchain.h blockchain.cpp
+blockchainTest.o: blockchainTest.cpp blockchain.h
 	g++ -g blockchainTest.cpp -c
 
 blockchain.o: blockchain.h blockchain.cpp
