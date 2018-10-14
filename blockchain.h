@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
+#include "picosha2.h"
 
 namespace junayed_naushad
 {
@@ -63,7 +64,13 @@ namespace junayed_naushad
       Blockchain()
       {
         head = new Transaction();
+        next_hash = "";
+        chain_size = 0;
       }
+
+      void set_next_hash(std::string hash);
+      std::string get_next_hash() const;
+
 
       void add(int an_amount, std::string a_sender, std::string a_receiver);
       void find(std::string a_sender) const;
@@ -71,6 +78,8 @@ namespace junayed_naushad
 
     private:
        Transaction* head;
+       std::string next_hash;
+       int chain_size;
     };
 
 }

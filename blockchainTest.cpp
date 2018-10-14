@@ -2,11 +2,13 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
+#include "picosha2.h"
 using namespace std;
 using namespace junayed_naushad;
 
 int main()
 {
+    Blockchain b1 = Blockchain();
     int operation = 0;
     string response;
     string an_amount;
@@ -46,7 +48,7 @@ int main()
         getline(cin, sender);
         cout << "Plese enter the name of the receiver:\n";
         getline(cin, receiver);
-        
+        b1.add(amount, sender, receiver);
       }
 
       //find transaction
