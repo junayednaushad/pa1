@@ -7,5 +7,6 @@ using namespace junayed_naushad;
 
 int main()
 {
+
     return 0;
 }

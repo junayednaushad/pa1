@@ -7,63 +7,63 @@
 
 namespace junayed_naushad
 {
-    class transaction
+    class Transaction
     {
     public:
+        //default constructor
+        Transaction() : amount(0), sender(""), receiver(""), nonce(""), hash(""), prev(NULL){}
         //constructor
-        transaction(
-            transaction* init_prev = NULL,
-            int init_amount = 0,
-            string init_sender = "",
-            string init_receiver = "",
-            string init_nonce = "",
-            string init_hash = ""
-            )
-            {
-                prev = init_prev;
-                amount = init_amount;
-                sender = init_sender;
-                receiver = init_receiver;
-                nonce = init_nonce;
-                hash = init_hash;
-            }
+        Transaction(
+          int an_amount,
+          std::string a_sender,
+          std::string a_receiver,
+          std::string a_nonce,
+          std::string a_hash,
+          Transaction* a_prev) :
+          amount(an_amount),
+          sender(a_sender),
+          receiver(a_receiver),
+          nonce(a_nonce),
+          hash(a_hash),
+          prev(a_prev) {}
 
         //Setters
-        void set_prev(transaction* new_prev)
-        {prev = new_prev;}
         void set_amount(int new_amount)
         {amount = new_amount;}
-        void set_sender(string new_sender)
+        void set_sender(std::string new_sender)
         {sender = new_sender;}
-        void set_receiver(string new_receiver)
+        void set_receiver(std::string new_receiver)
         {receiver = new_receiver;}
-        void set_nonce(string new_nonce)
+        void set_nonce(std::string new_nonce)
         {nonce = new_nonce;}
-        void set_hash(string new_hash)
+        void set_hash(std::string new_hash)
         {hash = new_hash;}
+        void set_prev(Transaction* new_prev)
+        {prev = new_prev;}
 
         //Getters
-        void get_amount
-
-        void print_transaction(transaction block)
-        {
-
-        }
+        int get_amount() const {return amount;}
+        std::string get_sender() const {return sender;}
+        std::string get_receiver() const {return receiver;}
+        std::string get_nonce() const {return nonce;}
+        std::string get_hash() const {return hash;}
 
     private:
-        transaction* prev;
         int amount;
-        string sender;
-        string receiver;
-        string nonce;
-        string hash;
+        std::string sender;
+        std::string receiver;
+        std::string nonce;
+        std::string hash;
+        Transaction* prev;
     };
 
-
-    class blockchain
+    void print_Transaction(Transaction block);
+    /*
+    class Blockchain
     {
 
     };
+    */
 }
 
 #endif

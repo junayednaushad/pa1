@@ -6,5 +6,5 @@ using namespace std;
 
 namespace junayed_naushad
 {
-
+    
 }
