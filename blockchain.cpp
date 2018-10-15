@@ -120,7 +120,7 @@ namespace junayed_naushad
             if(actual_hash.compare(expected_hash) == 0)
               t1 = t1->get_prev();
             else
-              test == false;
+              test = false;
           }
           if(test == false)
           {
@@ -131,11 +131,12 @@ namespace junayed_naushad
           else
           {
             cout << "The transaction-chain is valid\n";
-            cout << "Printing all transactions\n";
+            cout << "Printing all transactions\n\n";
             t1 = head;
             while(t1->get_prev() != NULL)
             {
               print_Transaction(t1);
+              cout << endl;
               t1 = t1->get_prev();
             }
             print_Transaction(t1);
