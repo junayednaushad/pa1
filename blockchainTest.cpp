@@ -16,32 +16,53 @@ int main()
     string sender;
     string receiver;
 
-    cout << "Welcome to the transaction-chain application\n";
+    cout << "\nWelcome to the transaction-chain application\n";
     while(operation != 4)
     {
-      cout << "Please enter the number corresponding to the function you would like to use:\n";
+      operation = 0;
+      cout << "\nPlease enter the number corresponding to the operation you would like to use:\n";
       cout << "1) Add a transaction to the chain\n";
       cout << "2) Find and print all transactions from a sender\n";
       cout << "3) Verify and print the chain\n";
       cout << "4) Quit\n";
       getline(cin, response);
-      operation = stoi(response);
+      for(int i = 0; i < response.length(); i++)
+      {
+        if(isdigit(response.at(i)) == 0)
+        {
+            operation = 5;
+            i = response.length();
+        }
+      }
+      if(operation != 5)
+        operation = stoi(response);
 
       //check for invalid input
       if(operation != 1 && operation != 2 && operation != 3 && operation != 4)
       {
-        cout << "Please enter a valid number\n";
+        cout << "Wrong operation, please enter a valid number\n";
       }
 
       //add transaction
       else if(operation == 1)
       {
         cout << "Please enter the amount you would like to add:\n";
-        getline(cin, an_amount);
-        while(an_amount.find(".",0) != -1)
+        int check = 0;
+        while(check != 1)
         {
-          cout << "Please enter an integer amount:\n";
+          check = 0;
           getline(cin, an_amount);
+          for(int i = 0; i < an_amount.length(); i++)
+          {
+            if(isdigit(an_amount.at(i)) == 0)
+            {
+                i = an_amount.length();
+                check = 2;
+                cout << "Please enter an integer amount:\n";
+            }
+          }
+          if(check == 0)
+            check = 1;
         }
         amount = stoi(an_amount);
         cout << "Please enter the name of the sender:\n";
@@ -54,13 +75,16 @@ int main()
       //find transaction
       else if(operation == 2)
       {
-        cout << "Finding transactions\n";
+        cout << "Please enter the name of the sender:\n";
+        getline(cin, sender);
+        b1.find(sender);
       }
 
       //verify and print
       else if(operation == 3)
       {
         cout << "Verifying chain\n";
+        b1.verify_print();
       }
 
       //quit

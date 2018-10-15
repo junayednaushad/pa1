@@ -55,7 +55,7 @@ namespace junayed_naushad
         Transaction* prev;
     };
 
-    void print_Transaction(Transaction block);
+    void print_Transaction(Transaction* t_ptr);
 
     class Blockchain
     {
